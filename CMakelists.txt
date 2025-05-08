@@ -1,0 +1,27 @@
+cmake_minimum_required(VERSION 3.28)
+project(CMakeOpenGL)
+
+set(EXEC_TARGET AppPrj)
+file(GLOB_RECURSE SOURCES ${CMAKE_SOURCE_DIR}/src/*.cpp)
+file(GLOB_RECURSE HEADERS ${CMAKE_SOURCE_DIR}/src/*.h ${CMAKE_SOURCE_DIR}/include/*.h)
+
+add_executable(${EXEC_TARGET} ${HEADERS} ${SOURCES})
+set_property(TARGET ${EXEC_TARGET} PROPERTY CXX_STANDARD 20)
+target_include_directories(${EXEC_TARGET} PRIVATE include src)
+
+#Library linking and Headers import 
+find_package(glad REQUIRED)
+find_package(glfw3 REQUIRED)
+
+target_link_libraries(${EXEC_TARGET} PRIVATE 
+  glad::glad
+  glfw
+)
+
+# Post build: Copy Resources to bin
+set(ResourcesPath ${CMAKE_CURRENT_SOURCE_DIR}/resources)
+add_custom_command(TARGET ${EXEC_TARGET} POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E cmake_echo_color --cyan "Copy Resources..."
+  COMMAND ${CMAKE_COMMAND} -E copy_directory ${ResourcesPath} $<TARGET_FILE_DIR:${EXEC_TARGET}>/resources
+)
+
