@@ -4,7 +4,8 @@
 #include <stdexcept>
 
 XWindow::XWindow(int InWidth, int InHeight, std::string InTitle)
-    : Width(InWidth), Height(InHeight), Title(InTitle)
+    : Width(InWidth), Height(InHeight), Title(InTitle), 
+	RawWindow(nullptr), DeltaTime(0.f)
 { 
     if (glfwInit() == GLFW_FALSE) {
 		throw std::runtime_error("Error glfw init");
