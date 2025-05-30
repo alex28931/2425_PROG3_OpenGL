@@ -1,4 +1,4 @@
-#include "Ex05QuadTextureDraw.h"
+#include "Ex06QuadPerspDraw.h"
 #include <string>
 #include <fstream>
 #include <vector>
@@ -7,9 +7,9 @@
 #include <cmath>
 #include "OGLTexture.h"
 
-Ex05QuadTextureDraw::Ex05QuadTextureDraw() 
+Ex06QuadPerspDraw::Ex06QuadPerspDraw() 
 {
-    Program = new OGLProgram("resources/shaders/quadtexture.vert", "resources/shaders/quadtexture.frag");
+    Program = new OGLProgram("resources/shaders/quadpersp.vert", "resources/shaders/quadpersp.frag");
     
     //Counter-clock wise. By now vertex data in NDC space.
     // |/ /|
@@ -65,7 +65,7 @@ Ex05QuadTextureDraw::Ex05QuadTextureDraw()
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
-Ex05QuadTextureDraw::~Ex05QuadTextureDraw() 
+Ex06QuadPerspDraw::~Ex06QuadPerspDraw() 
 {
     glDeleteVertexArrays(1, &Vao);
     glDeleteBuffers(1, &Vbo);
@@ -74,7 +74,7 @@ Ex05QuadTextureDraw::~Ex05QuadTextureDraw()
     delete Program;
 }
 
-void Ex05QuadTextureDraw::Update(float InDeltaTime)
+void Ex06QuadPerspDraw::Update(float InDeltaTime)
 {
     glClear(GL_COLOR_BUFFER_BIT);
     glDrawArrays(GL_TRIANGLES, 0, 6);

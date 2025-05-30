@@ -1,11 +1,11 @@
 #pragma once
 #include <glad/glad.h>
 
-class Ex05QuadTextureDraw 
+class Ex06QuadPerspDraw 
 {
 public:
-    Ex05QuadTextureDraw();
-    ~Ex05QuadTextureDraw();
+    Ex06QuadPerspDraw();
+    ~Ex06QuadPerspDraw();
     void Update(float InDeltaTime);
 private:
     GLuint Vao;

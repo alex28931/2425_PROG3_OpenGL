@@ -8,6 +8,8 @@
 #include "Ex03QuadIndexDraw.h"
 #include "Ex04QuadColorDraw.h"
 #include "Ex05QuadTextureDraw.h"
+#include "Ex06QuadPerspDraw.h"
+#include "Ex07CubePerspDraw.h"
 
 int main() {
 	
@@ -23,6 +25,8 @@ int main() {
 	//Ex03QuadIndexDraw Scene;
 	//Ex04QuadColorDraw Scene;
 	Ex05QuadTextureDraw Scene;
+	//Ex06QuadPerspDraw Scene;
+	//Ex07CubePerspDraw Scene;
 
 	while (Win.IsOpened())
 	{
