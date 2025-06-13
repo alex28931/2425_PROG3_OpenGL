@@ -126,6 +126,14 @@ void Ex08PhongDraw::Update(float InDeltaTime)
     Model = glm::rotate(Model, glm::radians(Angle), glm::vec3(0, 1, 0));
     Model = glm::scale(Model, glm::vec3(2.f));
 
+    /* Alternative preparing indipendent matrices
+    glm::mat4 Identity =  glm::mat4(1.f);
+    glm::mat4 Transl = glm::translate(Identity, glm::vec3(0, -4, 0));
+    glm::mat4 Rotate = glm::rotate(Identity, glm::radians(Angle), glm::vec3(0, 1, 0));
+    glm::mat4 Scale  = glm::scale(Identity, glm::vec3(2.f));
+    glm::mat4 Model = Transl * Rotate * Scale;
+    */
+
     glm::mat4 Mvp = Projection * View * Model;
     Program->SetUniform("mvp", Mvp);
 
