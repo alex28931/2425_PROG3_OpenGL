@@ -1,6 +1,7 @@
 [requires]
 glfw/3.4
 glad/0.1.36
+glm/1.0.1
 
 [options]
 glad/*:spec=gl

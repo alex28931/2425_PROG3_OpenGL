@@ -26,6 +26,30 @@ void OGLProgram::Bind() {
     glUseProgram(ProgramId);
 }
 
+void OGLProgram::SetUniform(const std::string& InName, float InValue)
+{
+    glUniform1f(glGetUniformLocation(ProgramId, InName.c_str()), InValue);
+}
+
+void OGLProgram::SetUniform(const std::string& InName, const Color& InValue)
+{
+    glUniform4fv( glGetUniformLocation(ProgramId, InName.c_str()), 
+        1, reinterpret_cast<const GLfloat*>(&InValue));
+}
+
+void OGLProgram::SetUniform(const std::string& InName, const glm::mat4& InValue)
+{
+    glUniformMatrix4fv(glGetUniformLocation(ProgramId, InName.c_str()), 1, GL_FALSE, &InValue[0][0]);
+}
+
+void OGLProgram::SetUniform(const std::string& InName, const glm::vec3& InValue)
+{
+    glUniform3fv(
+        glGetUniformLocation(ProgramId, InName.c_str()),
+        1, &InValue[0]
+    );
+}
+
 std::string ReadFile(const std::string& InPath)
 {
     std::ifstream InputStream(InPath, std::ios::ate);
