@@ -7,26 +7,14 @@
 
 Ex03QuadIndexDraw::Ex03QuadIndexDraw() 
 {
-    Program = new OGLProgram("resources/shaders/triangle.vert", "resources/shaders/triangle.frag");
+    Program = new OGLProgram("resources/shaders/triangleColor.vert", "resources/shaders/triangleColor.frag");
     
-    //Counter-clock wise. By now vertex data in NDC space.
-    // |/ /|
     std::vector<float> Vertices = {
-        /*
-         //Triangle Right
-        -0.5f, -0.5f, 0.f,  // bottom-left
-         0.5f, -0.5f, 0.f,  // bottom-right
-         0.5f,  0.5f, 0.f,  // top-right  
-
-        //Triangle Left
-        -0.5f, -0.5f, 0.f,  // bottom-left
-         0.5f,  0.5f, 0.f,  // top-right  
-        -0.5f,  0.5f, 0.f   // top-left
-        */
-        -0.5f, -0.5f, 0.f,  // bottom-left
-         0.5f, -0.5f, 0.f,  // bottom-right
-         0.5f,  0.5f, 0.f,  // top-right  
-        -0.5f,  0.5f, 0.f   // top-left
+            //Position             //Color
+        -0.5f, -0.5f, 0.f,   0.f, 1.f, 0.f, 1.f,  // bottom-left
+         0.5f, -0.5f, 0.f,   1.f, 0.f, 0.f, 1.f,  // bottom-right
+         0.5f,  0.5f, 0.f,   0.f, 0.f, 1.f, 1.f,  // top-right  
+        -0.5f,  0.5f, 0.f,   1.f, 0.f, 1.f, 1.f   // top-left
     };
 
     std::vector<uint32_t> Indexes = {
@@ -46,8 +34,11 @@ Ex03QuadIndexDraw::Ex03QuadIndexDraw()
 
     //3. Link to Vertex Shader
     GLuint Location_0 = 0;
-    glVertexAttribPointer(Location_0, 3, GL_FLOAT, GL_FALSE,  3 * sizeof(float), (void*)0);
+    GLuint Location_1 = 1;
+    glVertexAttribPointer(Location_0, 3, GL_FLOAT, GL_FALSE,  7 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(Location_0);
+    glVertexAttribPointer(Location_1, 4, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(Location_1);
 
     //4. Create EBO
     glGenBuffers(1, &Ebo);
