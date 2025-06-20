@@ -204,7 +204,7 @@ void Ex09PostFxDraw::Update(float InDeltaTime)
     SceneProgram->SetUniform("mvp", Mvp);
     SceneProgram->SetUniform("model", Model);
 
-    glDrawArrays(GL_TRIANGLES, 0, SceneVertices.size());
+    glDrawArrays(GL_TRIANGLES, 0, SceneVertices.size() / 8);
 
 
     //return;
