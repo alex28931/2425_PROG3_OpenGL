@@ -12,6 +12,7 @@
 #include "Ex07CubePerspDraw.h"
 #include "Ex08PhongDraw.h"
 #include "Ex09PostFxDraw.h"
+#include "Ex10DeferredDraw.h"
 
 int main() {
 	
@@ -30,7 +31,8 @@ int main() {
 	//Ex06QuadPerspDraw Scene;
 	//Ex07CubePerspDraw Scene;
 	//Ex08PhongDraw Scene;
-	Ex09PostFxDraw Scene;
+	//Ex09PostFxDraw Scene;
+	Ex10DeferredDraw Scene;
 
 	while (Win.IsOpened())
 	{
