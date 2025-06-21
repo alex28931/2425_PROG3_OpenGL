@@ -33,6 +33,7 @@ int main() {
 	//Ex08PhongDraw Scene;
 	//Ex09PostFxDraw Scene;
 	Ex10LightDraw Scene;
+	
 
 	while (Win.IsOpened())
 	{
